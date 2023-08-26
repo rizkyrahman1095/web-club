@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title th:text="${logs}"></title>
+    <link rel="icon" type="image/png" href="/assets/logo.png"/>
+    <link href="/webjars/bootstrap/5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <nav th:insert="/layout/navbar"></nav>
+    <!--  page content-->
+    <section class="py-5 bg-light">
+        <div class="container mb-3 px-5">
+            <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}" class="row g-3 mb-3">
+                <div class="col-md-12">
+                    <label for="title" class="form-label">Title</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            name="title"
+                            th:field="*{title}"
+                            placeholder="title">
+                    <p th:if="${#fields.hasErrors('title') }" class="text-danger"  th:errors="*{title}"></p>
+                </div>
+                <div class="col-md-12">
+                    <label for="photoUrl" class="form-label">Photo Url</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="photoUrl"
+                            name="photoUrl"
+                            th:field="*{photoUrl}"
+                            placeholder="photoUrl">
+                    <p th:if="${#fields.hasErrors('photoUrl') }" class="text-danger"  th:errors="*{photoUrl}"></p>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="content"
+                            placeholder="content"
+                            name="content"
+                            th:field="*{content}">
+                    <p th:if="${#fields.hasErrors('content') }" class="text-danger"  th:errors="*{content}"></p>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+            <a class="btn btn-lg btn-primary" href="#!">Contact us</a>
+        </div>
+    </section>
+
+</main>
+<!-- Footer-->
+<footer th th:insert="/layout/footer"></footer>
+<script th:insert="/layout/js"></script>
+</body>
+</html>
